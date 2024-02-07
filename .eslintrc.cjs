@@ -8,6 +8,7 @@ module.exports = {
     'eslint:recommended',
     '@vue/eslint-config-typescript',
     'airbnb-base',
+    'plugin:prettier/recommended',
   ],
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -16,18 +17,15 @@ module.exports = {
   settings: {
     'import/resolver': {
       alias: {
-        map: [
-          ['@', './src'],
-        ],
+        map: [['@', './src']],
         extensions: ['.js', '.vue'],
       },
     },
-    'import/core-modules': [
-      'vite',
-      '@vitejs/plugin-vue',
-    ],
+    'import/core-modules': ['vite', '@vitejs/plugin-vue'],
   },
+  plugins: ['prettier'],
   rules: {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'prettier/prettier': 'error',
   },
 };

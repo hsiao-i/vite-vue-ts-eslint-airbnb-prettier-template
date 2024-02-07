@@ -7,7 +7,6 @@ const msg = ref<Test>({
   id: 15,
   name: 'Vite',
   age: 18,
-
 });
 console.log(msg.value);
 </script>
