@@ -13,7 +13,7 @@ The following are the steps to create this template. After creating the project 
 1. 使用 `npm create vite@latest` (官網方法)，建立 vue、typescript、eslint、pinia、router 專案
 
 2. 將 eslint 改為 airbnb 風格， `npm install --save-dev eslint-config-airbnb-base`，修改 .eslintrc.cjs，將 `airbnb-base` 加進 extends 
-```
+```javascript
 module.exports = {
   extends: [
     ...
@@ -23,14 +23,14 @@ module.exports = {
 ```
 
 3. 設定 eslint 自動修正錯誤，專案內建立 .vscode 資料夾，.vscode 資料夾內建一個 setting.json 檔案，放入以下程式碼
-```
+```javascript
 {
   "eslint.autoFixOnSave": true, // 儲存時自動執行 ESLint 格式化
 }
 ```
 
 4. 令 eslint 可以正常分析 '@' 的路徑， npm install --save-dev eslint-import-resolver-alias  。 .eslintrc.cjs 增加一個 settings ，裡面放 import/resolver
-```
+```javascript
 module.exports = {
     ...
 	settings: {
@@ -49,7 +49,7 @@ module.exports = {
 5. 檢查 import 的規範，例如 import 的順序、import 檔案是否存在等等，  `npm install --save-dev eslint-plugin-import`
 
 6. 解決 vite.config.js 的錯誤，在 import .. from 'vite' 會出現像是 「vite 應該要被放在 dependicies 而不是 devdependicies」這樣的錯誤。 .eslintrc.cjs 的 setting 內要再增加一段 'import/core-modules'
-```
+```javascript
 module.exports = {
     ...
     settings: {
@@ -63,7 +63,7 @@ module.exports = {
 ```
 
 7. 增加 eslint 警告畫面， `npm install --save vite-plugin-eslint` 。 vite.config.js 增加以下內容
-```
+```javascript
 import eslintPlugin from 'vite-plugin-eslint';
 
 export default defineConfig({
@@ -83,7 +83,7 @@ export default defineConfig({
 - typescript-eslint/parser：typescript 的 eslint 解析器
 
 2. .eslintrc.cjs 裡面 parserOptions 再加上 parser: '@typescript-eslint/parser',
-```
+```javascript
 module.exports = {
   ...
   parserOptions: {
@@ -94,11 +94,11 @@ module.exports = {
 ```
 
 3. 若 eslint 還是一直出現以下錯誤，可在 .eslintrc.cjs 的 rules 關閉此項提醒
-```
+```javascript
 'vite-plugin-eslint' should be listed in the project's dependencies. Run 'npm i -S vite-plugin-eslint' to add iteslintimport/no-extraneous-dependencies
 ```
 
-```
+```javascript
 module.exports = {
 	rules: {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
@@ -107,7 +107,7 @@ module.exports = {
 ```
 
 4. 在使用 `.vue` 的檔案若出現以下錯誤，可在原本 .env.d.ts 加上 `declare module '*.vue'`
-```
+```javascript
 找不到模組 './components/HelloWorld.vue' 或其對應的型別宣告。ts(2307)
 ```
 ```
@@ -127,7 +127,7 @@ declare module '*.vue' {
 2. 安裝 eslint 外掛， `npm install eslint-plugin-prettier --save-dev`
 
 3. .eslintrc 在 plugins 和 rules 新增以下內容
-```
+```javascript
 "plugins": [
 	"prettier"
 ]
